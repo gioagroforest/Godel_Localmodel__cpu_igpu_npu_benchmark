@@ -1,0 +1,19 @@
+{
+  "stage": "stage1",
+  "rounds": 2,
+  "timeout": 1800,
+  "plan": {"short_reps": 2, "short_tokens": 256, "long_reps": 2},
+  "configs": [
+    {"name": "NPU-int4-cw", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw"},
+    {"name": "NPU-official-qwen3", "runtime": "openvino", "device": "NPU", "ir": "Qwen3-8B-int4-cw-ov-official"},
+    {"name": "NPU-int4-cw-i8sym", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw-i8sym"},
+    {"name": "NPU-int4-gq128", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-gq128"},
+    {"name": "NPU-nf4-cw", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-nf4-cw"},
+    {"name": "iGPU-int4-cw", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-cw"},
+    {"name": "iGPU-int4-asym-gq128", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-asym-gq128"},
+    {"name": "iGPU-nf4-cw", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-nf4-cw"},
+    {"name": "CPU-int4-cw", "runtime": "openvino", "device": "CPU", "threads": 20, "ir": "goedel-ov-int4-cw"},
+    {"name": "CPU-int4-asym-gq128", "runtime": "openvino", "device": "CPU", "threads": 20, "ir": "goedel-ov-int4-asym-gq128"},
+    {"name": "CPU-nf4-cw", "runtime": "openvino", "device": "CPU", "threads": 20, "ir": "goedel-ov-nf4-cw"}
+  ]
+}

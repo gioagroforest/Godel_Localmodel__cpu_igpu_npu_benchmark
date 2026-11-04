@@ -1,0 +1,15 @@
+{
+  "stage": "stage4",
+  "rounds": 2,
+  "timeout": 1800,
+  "min_free_gb": 5,
+  "plan": {"short_reps": 1, "short_tokens": 128, "long_reps": 1, "xlong_reps": 2, "xlong_chars": 6400},
+  "configs": [
+    {"name": "NPU-chunk128-ctx8192", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "context": [3072, 8192], "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}},
+    {"name": "NPU-chunk1024-ctx8192", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "context": [3072, 8192]},
+    {"name": "iGPU-native", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-cw"},
+    {"name": "CPU-native", "runtime": "openvino", "device": "CPU", "threads": 20, "ir": "goedel-ov-int4-cw"},
+    {"name": "HYB-NPU256-iGPU-x", "runtime": "hybrid", "device": "GPU", "ir": "goedel-ov-int4-cw", "chunk": 256, "max_prompt": 3072},
+    {"name": "HYB-NPU1024-iGPU-x", "runtime": "hybrid", "device": "GPU", "ir": "goedel-ov-int4-cw", "chunk": 1024, "max_prompt": 3072}
+  ]
+}

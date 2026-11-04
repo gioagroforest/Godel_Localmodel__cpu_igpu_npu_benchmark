@@ -1,0 +1,10 @@
+{
+  "max_tokens": 3600,
+  "timeout": 7200,
+  "lemmas": ["task_a", "task_b", "task_c", "task_d", "task_e", "task_f"],
+  "configs": [
+    {"name": "iGPU-awq-se", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-cw-awq-se", "cache_tag": "prove-awq"},
+    {"name": "NPU-awq-se", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw-awq-se", "context": [512, 4112], "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}, "cache_tag": "prove-awq"},
+    {"name": "NPU-int4-cw-driver5540", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "context": [512, 4112], "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}, "cache_tag": "prove-awq"}
+  ]
+}

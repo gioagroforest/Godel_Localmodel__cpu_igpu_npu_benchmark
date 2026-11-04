@@ -1,0 +1,21 @@
+{
+  "stage": "stage3",
+  "rounds": 2,
+  "timeout": 1800,
+  "min_free_gb": 5,
+  "plan": {"short_reps": 2, "short_tokens": 256, "deep_reps": 1, "deep_tokens": 1024, "long_reps": 2},
+  "configs": [
+    {"name": "NPU-chunk1024", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw"},
+    {"name": "NPU-chunk128", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}},
+    {"name": "NPU-chunk256", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 256}},
+    {"name": "NPU-chunk128-ctx2048", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "context": [1024, 2048], "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}},
+    {"name": "NPU-chunk128-bestperf", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "hint": "BEST_PERF", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}},
+    {"name": "iGPU-native", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-cw"},
+    {"name": "iGPU-kv-f16", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-cw", "extra": {"KV_CACHE_PRECISION": "f16"}},
+    {"name": "iGPU-asym-gq128", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-asym-gq128"},
+    {"name": "CPU-native", "runtime": "openvino", "device": "CPU", "threads": 20, "ir": "goedel-ov-int4-cw"},
+    {"name": "HYB-NPU128-iGPU", "runtime": "hybrid", "device": "GPU", "ir": "goedel-ov-int4-cw", "chunk": 128},
+    {"name": "HYB-NPU256-iGPU", "runtime": "hybrid", "device": "GPU", "ir": "goedel-ov-int4-cw", "chunk": 256},
+    {"name": "HYB-NPU128-CPU", "runtime": "hybrid", "device": "CPU", "threads": 20, "ir": "goedel-ov-int4-cw", "chunk": 128}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "max_tokens": 3600,
+  "timeout": 7200,
+  "lemmas": ["task_a", "task_b", "task_c", "task_d", "task_e", "task_f"],
+  "configs": [
+    {"name": "iGPU-asym-gq128", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-asym-gq128", "cache_tag": "prove"},
+    {"name": "iGPU-int4-cw", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-cw", "cache_tag": "prove"},
+    {"name": "NPU-chunk128", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "context": [512, 4112], "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}, "cache_tag": "prove"},
+    {"name": "CPU-int4-cw", "runtime": "openvino", "device": "CPU", "threads": 20, "ir": "goedel-ov-int4-cw", "cache_tag": "prove"},
+    {"name": "HYB-NPU256-iGPU", "runtime": "hybrid", "device": "GPU", "ir": "goedel-ov-int4-cw", "chunk": 256, "cache_tag": "prove",
+     "lemmas": ["task_a", "task_b", "task_c"]}
+  ]
+}

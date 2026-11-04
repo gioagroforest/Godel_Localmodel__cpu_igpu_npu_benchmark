@@ -1,0 +1,17 @@
+{
+  "stage": "probe2",
+  "rounds": 1,
+  "timeout": 1500,
+  "min_free_gb": 6,
+  "plan": {"short_reps": 1, "short_tokens": 64, "long_reps": 1},
+  "configs": [
+    {"name": "NPU-chunk128", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}},
+    {"name": "NPU-chunk256-ctx2048", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "context": [1024, 2048], "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 256}},
+    {"name": "HYB-NPU256-GPUnone", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 256, "++NPUW_LLM_GENERATE_CONFIG": {"NPUW_DEVICES": "GPU", "NPUW_ONLINE_PIPELINE": "NONE"}}},
+    {"name": "HYB-NPU256-CPUnone", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 256, "++NPUW_LLM_GENERATE_CONFIG": {"NPUW_DEVICES": "CPU", "NPUW_ONLINE_PIPELINE": "NONE"}}},
+    {"name": "HYB-NPU256-GPUnofold", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 256, "++NPUW_LLM_GENERATE_CONFIG": {"NPUW_DEVICES": "GPU", "NPUW_FOLD": "NO"}}},
+    {"name": "HYB-GPUnone-NPU", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"++NPUW_LLM_PREFILL_CONFIG": {"NPUW_DEVICES": "GPU", "NPUW_ONLINE_PIPELINE": "NONE"}}},
+    {"name": "HYB-GPUnone-GPUnone", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"++NPUW_LLM_PREFILL_CONFIG": {"NPUW_DEVICES": "GPU", "NPUW_ONLINE_PIPELINE": "NONE"}, "++NPUW_LLM_GENERATE_CONFIG": {"NPUW_DEVICES": "GPU", "NPUW_ONLINE_PIPELINE": "NONE"}}},
+    {"name": "NPU-bestperf", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "hint": "BEST_PERF", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 256}}
+  ]
+}

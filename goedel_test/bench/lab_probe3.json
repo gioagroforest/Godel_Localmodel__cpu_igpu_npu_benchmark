@@ -1,0 +1,11 @@
+{
+  "stage": "probe3c",
+  "rounds": 1,
+  "timeout": 1200,
+  "min_free_gb": 5,
+  "plan": {"short_reps": 1, "short_tokens": 64, "long_reps": 1},
+  "configs": [
+    {"name": "HYB2-NPU128-GPU", "runtime": "hybrid", "device": "GPU", "ir": "goedel-ov-int4-cw", "chunk": 128},
+    {"name": "HYB2-NPU128-CPU", "runtime": "hybrid", "device": "CPU", "threads": 20, "ir": "goedel-ov-int4-cw", "chunk": 128}
+  ]
+}

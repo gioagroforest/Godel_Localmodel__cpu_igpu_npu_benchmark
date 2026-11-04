@@ -1,0 +1,15 @@
+# Large or machine-specific: recreate them with the steps in README.md
+models/
+ov_env/
+llama.cpp-*/
+lean49/.lake/
+lean49/attempts/
+lean49/attempts_bench/
+goedel_test/bench/lab/ov_cache/
+__pycache__/
+*.pyc
+# Local run output that isn't published
+*.log
+*.npz
+goedel_test/results.jsonl
+goedel_test/bench/lab/report.md

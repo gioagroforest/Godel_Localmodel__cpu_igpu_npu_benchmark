@@ -1,0 +1,12 @@
+{
+  "stage": "awq",
+  "rounds": 2,
+  "timeout": 1800,
+  "min_free_gb": 5,
+  "plan": {"short_reps": 2, "short_tokens": 256, "deep_reps": 1, "deep_tokens": 1024, "long_reps": 2},
+  "configs": [
+    {"name": "NPU-awq-se", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw-awq-se", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}},
+    {"name": "NPU-int4-cw", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 128}},
+    {"name": "iGPU-awq-se", "runtime": "openvino", "device": "GPU", "ir": "goedel-ov-int4-cw-awq-se"}
+  ]
+}

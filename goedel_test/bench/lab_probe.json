@@ -1,0 +1,17 @@
+{
+  "stage": "probe",
+  "rounds": 1,
+  "timeout": 1500,
+  "min_free_gb": 6,
+  "plan": {"short_reps": 1, "short_tokens": 64, "long_reps": 1},
+  "configs": [
+    {"name": "NPU-baseline", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw"},
+    {"name": "NPU-chunk256", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 256}},
+    {"name": "NPU-chunk512", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_PREFILL_CHUNK_SIZE": 512}},
+    {"name": "NPU-prefill-static", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"PREFILL_HINT": "STATIC"}},
+    {"name": "NPU-fp8", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"NPUW_LLM_OPTIMIZE_FP8": "YES"}},
+    {"name": "HYB-NPUprefill-GPUdecode", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"++NPUW_LLM_GENERATE_CONFIG": {"NPUW_DEVICES": "GPU"}}},
+    {"name": "HYB-GPUprefill-NPUdecode", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"++NPUW_LLM_PREFILL_CONFIG": {"NPUW_DEVICES": "GPU"}}},
+    {"name": "HYB-NPUprefill-CPUdecode", "runtime": "openvino", "device": "NPU", "ir": "goedel-ov-int4-cw", "extra": {"++NPUW_LLM_GENERATE_CONFIG": {"NPUW_DEVICES": "CPU"}}}
+  ]
+}
