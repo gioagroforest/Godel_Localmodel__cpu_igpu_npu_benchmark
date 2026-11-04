@@ -350,6 +350,16 @@ apart from the task names and placeholders.
 In `runs.jsonl`, stage `driver5540` is an interrupted run with possibly disturbed timings, so use `driver5540-rerun`
 instead.
 
+## License
+
+| What | License |
+|---|---|
+| Code and test plans: `*.py`, `goedel_test/bench/lab_*.json` and the `lean49/` project files | [MIT](LICENSE) |
+| Data and reports: the `.jsonl` files, `results/summary.json`, `goedel_test/bench/out/report.md`, this README and `REPORT_FOR_AI.md` | [CC BY 4.0](LICENSE-CC-BY-4.0) |
+
+To reuse the data or reports, credit `gioagroforest` and link to this repo. Neither license covers the Gödel-Prover or
+Qwen3 models, OpenVINO, llama.cpp, Lean or Mathlib, which have their own terms.
+
 ## How this was made
 
 Claude Code (Anthropic's coding agent) planned and ran these tests, wrote the code and drafted these reports, directed

@@ -14,6 +14,8 @@
 - **Software:** OpenVINO and GenAI 2026.4.1, NNCF 3.4.0, optimum-intel 2.2.0, Lean 4.9.0, Mathlib v4.9.0.
 - **Provenance:** planned, run and written by Claude Code under human direction on one machine in November 2026. Not
   peer-reviewed. Sample: 6 Lean 4 proof tasks, 1 greedy attempt each.
+- **License:** code and test plans are MIT (`LICENSE`). Data and reports are CC BY 4.0 (`LICENSE-CC-BY-4.0`), so reuse
+  needs attribution to `gioagroforest` with a link to this repo. Neither covers the models or third-party software.
 - **Withheld:** task statements, model outputs, token IDs and logs. Tasks appear only as `task_a` to `task_f`, so these
   results say nothing about what kind of Lean statement any setup handles well. This repo covers computer performance.
 
